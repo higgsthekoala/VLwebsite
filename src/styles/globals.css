@@ -1,0 +1,160 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    /* Dark theme based on colors */
+    --background: 210 4% 17%; /* #2a2d2f */
+    --foreground: 40 9% 89%; /* #e3e2db */
+    --card: 210 4% 17%;
+    --card-foreground: 40 9% 89%;
+    --popover: 210 4% 17%;
+    --popover-foreground: 40 9% 89%;
+    --primary: 40 9% 89%;
+    --primary-foreground: 210 4% 17%;
+    --secondary: 0 0% 52%; /* #848585 */
+    --secondary-foreground: 40 9% 89%;
+    --muted: 0 0% 52%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 30 25% 51%; /* #b28450 */
+    --accent-foreground: 40 9% 89%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 9% 89%;
+    --border: 0 0% 27%;
+    --input: 0 0% 27%;
+    --ring: 40 9% 89%;
+    --radius: 0.5rem;
+
+    /* Custom colors */
+    --color-brown: 30 25% 51%; /* #b28450 */
+    --color-beige: 40 30% 76%; /* #c5a284 */
+    --color-teal: 185 44% 49%; /* #409ea6 */
+    --color-grey: 30 3% 52%; /* #848585 */
+    --color-light-grey: 50 6% 70%; /* #b4b8b5 */
+  }
+}
+
+@layer base {
+  * {
+   border-color: hsl(var(--border));
+}
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-weight: normal;
+}
+}
+
+@layer components {
+  /* Custom typography styles */
+.voidlight-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; /* Black weight */
+  letter-spacing: -0.025em; /* tracking-tight equivalent */
+  line-height: 1; /* leading-none */
+}
+
+.voidlight-subheading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Bold weight */
+  letter-spacing: -0.025em; /* tracking-tight */
+  line-height: 1.25; /* leading-tight */
+}
+
+.voidlight-body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; /* Normal weight */
+  line-height: 1.625; /* leading-relaxed */
+}
+
+/* Hero text styling */
+.hero-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 900; /* font-black */
+  letter-spacing: -0.05em; /* tracking-tighter equivalent */
+  line-height: 1; /* leading-none */
+  text-transform: uppercase;
+}
+
+/* Project grid hover effects */
+.project-card {
+  font-family: 'Montserrat', sans-serif;
+  transition-property: all;
+  transition-duration: 300ms;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-0.25rem); /* -translate-y-1 equivalent */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+  .project-overlay {
+    background: linear-gradient(to top, rgba(42, 45, 47, 0.9) 0%, rgba(42, 45, 47, 0.3) 50%, transparent 100%);
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--secondary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+
+}
+
+/* CORRECTED ANIMATIONS */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+  }
+  50% { 
+    transform: translateY(-15px) scale(1.2); 
+  }
+}
+
+@keyframes spin-slow {
+  from { 
+    transform: rotate(0); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
